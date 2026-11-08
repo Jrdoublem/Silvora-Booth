@@ -1,0 +1,65 @@
+.journey-map{margin:23px 0 34px;position:relative;padding:20px 20px 12px;border:1px solid #d8ccb1;border-radius:15px;background:linear-gradient(125deg,#f5ead4df,#fcf9eeed),url('assets/travel-background.svg') center/800px;overflow:hidden;box-shadow:inset 0 0 0 5px #fffcf455}.journey-map>.eyebrow{position:relative;display:block}.route-stops{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:relative;gap:8px;margin-top:19px}.route-line{position:absolute;top:31px;left:10%;width:80%;height:55px;fill:none;stroke:#b49a69;stroke-width:2;stroke-dasharray:5 7;pointer-events:none}.route-stop{position:relative;z-index:1;border:0;background:none;color:#625c43;display:flex;flex-direction:column;align-items:center;gap:8px;padding:5px 0 9px;border-radius:12px;min-width:0}.route-stop:hover{background:#fffaf07d}.stop-number{font-size:9px;letter-spacing:1px;color:#9c8153}.stop-medallion{width:62px;height:62px;display:grid;place-items:center;background:linear-gradient(135deg,#fff7df,#dfc99b);border:1px solid #d2bb8b;border-radius:50%;color:#916c36;box-shadow:0 4px 0 #bda67c,0 7px 11px #92764b1c,inset 0 0 0 5px #fff8e488;transition:transform .2s}.stop-medallion .ui-icon{width:29px;height:29px}.route-stop:hover .stop-medallion{transform:translateY(-3px)}.route-stop strong{font-size:13px;font-weight:600;margin-top:4px}.stop-status{font-size:9px;color:#968567}.visited .stop-medallion{color:#fdf4db;background:linear-gradient(135deg,#6c8365,#35594b);border-color:#566f50;box-shadow:0 4px 0 #294535,inset 0 0 0 4px #d3dcc532}.visited .stop-status{color:#45624c}.visited .stop-number{color:#53714d}.stamp-impact{width:150px;height:150px;margin:0 auto 16px;transform:rotate(var(--tilt,-8deg));animation:stamp-down .65s cubic-bezier(.2,.7,.25,1) both}.stamp-celebration h2{animation:reward-appear .35s .4s both}.opening-gift{position:relative;width:220px;height:200px;margin:10px auto 14px;perspective:650px}.gift-halo{position:absolute;inset:27px 2px 5px;background:radial-gradient(ellipse,#e9c56b65,transparent 68%);animation:halo-bloom 1.2s .9s ease-out both}.box-base{position:absolute;width:118px;height:87px;left:51px;top:93px;background:linear-gradient(110deg,#e4c078,#ba8639);border:1px solid #b48542;border-radius:4px 4px 12px 12px;box-shadow:inset -14px 0 0 #9f6e2a33,0 12px 16px #5e492020}.box-base i{position:absolute;inset:0 auto 0 45px;width:24px;background:linear-gradient(90deg,#3f654f,#64806a)}.box-lid{position:absolute;left:44px;top:76px;width:132px;height:29px;border:1px solid #c19a52;border-radius:6px;background:linear-gradient(#f4dca1,#d6ad63);box-shadow:0 4px 0 #a77d3d55;transform-origin:15% 90%;animation:lid-lift .8s .9s cubic-bezier(.24,.7,.3,1) both}.box-lid>i{position:absolute;width:25px;top:0;bottom:0;left:51px;background:#57765b}.bow-left,.bow-right{position:absolute;width:44px;height:29px;border:7px solid #4e7158;top:-27px;border-radius:50% 50% 10% 50%;left:26px;transform:rotate(24deg)}.bow-right{left:65px;transform:rotate(-24deg) scaleX(-1)}.gift-emblem{position:absolute;left:92px;top:122px;color:#f4e6bd;border:1px solid #f3e3b666;border-radius:50%;padding:6px;background:#45634f}.gift-emblem .ui-icon{width:23px;height:23px}.gift-spark{position:absolute;color:#b89445;animation:spark-burst .9s 1.1s both}.gift-spark .ui-icon{width:22px;height:22px}.gift-spark.one{left:21px;top:61px;transform:rotate(-15deg)}.gift-spark.two{right:8px;top:48px}.gift-spark.three{right:22px;top:132px;color:#799568}.reward-reveal{animation:reward-appear .45s 1.7s both}.reward-reveal h2{font-size:28px;margin-top:10px;color:#35594b}.reward-reveal .eyebrow{font-size:10px;letter-spacing:.5px}.reward-reveal p{font-size:12px}.reward-opening{padding-top:0}
+@keyframes stamp-down{0%{opacity:0;transform:scale(1.8) rotate(calc(var(--tilt,-8deg) - 14deg))}55%{opacity:1;transform:scale(.91) rotate(var(--tilt,-8deg))}75%{transform:scale(1.05) rotate(calc(var(--tilt,-8deg) - 2deg))}100%{opacity:1;transform:scale(1) rotate(var(--tilt,-8deg))}}
+@keyframes lid-lift{0%,20%{transform:translateY(0) rotate(0)}40%{transform:translateY(-5px) rotate(-4deg)}100%{transform:translate(-10px,-49px) rotate(-15deg)}}
+@keyframes reward-appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes halo-bloom{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+@keyframes spark-burst{from{opacity:0;scale:.3}to{opacity:1;scale:1}}
+@media(max-width:650px){.journey-map{padding:17px 11px 12px}.route-stops{gap:4px}.stop-medallion{width:55px;height:55px}.stop-medallion .ui-icon{width:26px;height:26px}.route-stop strong{font-size:11px}.stop-status{font-size:8px}.stop-number{font-size:8px}.route-line{top:26px}.reward-reveal h2{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.stamp-impact,.stamp-celebration h2,.reward-reveal,.gift-spark,.gift-halo,.box-lid{animation:none!important}.box-lid{transform:translate(-10px,-49px) rotate(-15deg)}.stop-medallion{transition:none}.reward-reveal{opacity:1;transform:none}}
+
+.photo-preview{display:flex;gap:6px}.photo-preview img,.question-photo img{min-width:0;flex:1;width:100%;object-fit:cover;border-radius:9px}.photo-preview img{height:clamp(95px,19vh,150px)}#photo-status{font-size:12px}.photo-credit-link{display:block;font-size:11px;text-decoration:underline;margin-top:14px;color:#736b5c}
+
+.question-photo img{display:block;height:clamp(105px,20vh,165px);margin:8px 0 12px;object-fit:contain;background:#eee6d6}.match-grid:has(.photo-tile){grid-template-columns:1.2fr 1fr;grid-template-rows:repeat(3,clamp(74px,12vh,103px));grid-auto-flow:column}.match-grid:has(.photo-tile) .tile{min-height:0;height:100%}.match-grid .photo-tile img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* A newly earned stamp presses into the passport and the map after the dialog closes. */
+.stamp.just-earned .seal{animation:seal-press .7s cubic-bezier(.2,.7,.25,1) both}
+.route-stop.just-earned .stop-medallion{animation:medal-pop .7s cubic-bezier(.2,.7,.25,1) both}
+@keyframes seal-press{0%{transform:scale(1.7) rotate(calc(var(--tilt) - 18deg));opacity:0}55%{transform:scale(.9) rotate(var(--tilt));opacity:1}75%{transform:scale(1.06) rotate(calc(var(--tilt) - 2deg))}100%{transform:scale(1) rotate(var(--tilt))}}
+
+/* Finished passport slot: the ink stamp replaces the dashed placeholder. */
+.stamp-art{display:block;width:100%;height:100%;overflow:visible}
+.stamp.done .seal{border:0;background:radial-gradient(circle,#f4ead6 0 58%,transparent 60%);box-shadow:none;transform:rotate(var(--tilt));padding:0;display:block}
+.stamp.done .seal .stamp-art{opacity:.92;mix-blend-mode:multiply}
+.stamp.done{color:#5d5442;font-weight:600}
+.stamp-impact .stamp-art{filter:drop-shadow(0 1px 0 #fff8)}
+@keyframes medal-pop{0%{transform:scale(.6)}50%{transform:scale(1.18);box-shadow:0 4px 0 #294535,0 0 0 12px #35594b22}100%{transform:scale(1)}}
+
+/* Paper confetti when the third stamp is collected. */
+.stamp-celebration{position:relative}
+.confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.confetti i{position:absolute;top:-14px;left:var(--x);width:8px;height:13px;border-radius:2px;background:var(--c);opacity:0;transform:scale(var(--s));animation:confetti-fall var(--t,1.8s) var(--d) cubic-bezier(.25,.6,.5,1) forwards}
+.confetti i:nth-child(3n){width:10px;height:10px;border-radius:50%}
+@keyframes confetti-fall{0%{opacity:1;transform:translateY(0) rotate(0) scale(var(--s))}80%{opacity:1}100%{opacity:0;transform:translateY(340px) rotate(var(--r)) scale(var(--s))}}
+
+/* The mascot hops and its message fades in when it has something new to say. */
+.travel-companion.speaking .companion-message{animation:reward-appear .45s both}
+.travel-companion.speaking .companion-picture img{animation:mascot-hop .6s ease-out}
+@keyframes mascot-hop{0%,100%{transform:translateY(0)}35%{transform:translateY(-14px) rotate(-3deg)}65%{transform:translateY(0) rotate(1deg)}}
+
+/* Prize draw: shake, roll the names, burst open, pop the prize out. */
+.reward-opening{position:relative}
+.gift-box{position:absolute;inset:0;transform-origin:50% 85%;animation:box-shake .9s ease-in-out both}
+@keyframes box-shake{0%,100%{transform:none}10%{transform:rotate(-5deg)}20%{transform:rotate(5deg)}30%{transform:rotate(-7deg) translateY(-2px)}40%{transform:rotate(7deg)}50%{transform:rotate(-9deg) translateY(-4px)}60%{transform:rotate(9deg)}70%{transform:rotate(-6deg) translateY(-6px)}80%{transform:rotate(4deg)}90%{transform:translateY(2px) scale(1.04,.96)}}
+.gift-rays{position:absolute;inset:-30px -20px -10px;border-radius:50%;background:repeating-conic-gradient(from 0deg,#e9c56b55 0 9deg,transparent 9deg 24deg);-webkit-mask:radial-gradient(circle,#000 25%,transparent 68%);mask:radial-gradient(circle,#000 25%,transparent 68%);opacity:.9;animation:rays-in .6s .95s ease-out both,rays-spin 9s .95s linear infinite}
+@keyframes rays-in{from{opacity:0;scale:.4}to{opacity:.9;scale:1}}
+@keyframes rays-spin{to{rotate:360deg}}
+.prize-pop{position:absolute;left:78px;top:22px;width:64px;height:64px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fffdf3,#f3e2b5);border:2px solid #d2ab5c;color:#ab5b3c;box-shadow:0 8px 18px #8a5f2033,0 0 0 6px #fff6dd99;animation:prize-pop .75s 1.05s cubic-bezier(.2,1.5,.4,1) both}
+.prize-pop .ui-icon{width:36px;height:36px;stroke-width:1.6}
+@keyframes prize-pop{0%{opacity:0;transform:translateY(70px) scale(.2)}60%{opacity:1}100%{opacity:1;transform:none}}
+.prize-roller{display:flex;align-items:center;justify-content:center;gap:10px;height:38px;margin:4px 0 6px;overflow:hidden;font-size:12px;color:#8a765e;animation:roller-out .3s 1.5s forwards}
+.roller-window{height:34px;min-width:118px;overflow:hidden;border:1px solid #d9c391;border-radius:9px;background:#fffaf0;box-shadow:inset 0 6px 6px -5px #8a6a2c33,inset 0 -6px 6px -5px #8a6a2c33}
+.roller-strip{animation:roll 1.35s cubic-bezier(.15,.65,.25,1) both}
+.roller-strip b{display:block;height:34px;line-height:34px;font-size:16px;color:#35594b}
+@keyframes roll{from{transform:translateY(0)}to{transform:translateY(calc(var(--steps) * -34px))}}
+@keyframes roller-out{to{opacity:0;height:0;margin:0}}
+
+/* Staff PIN form for the reset button. */
+.staff-reset{display:block;margin:22px auto 0;border:0;background:none;text-decoration:underline;color:#a99882;font-size:10px}
+.pin-form{margin-top:14px}
+.pin-form input{width:100%;font-size:24px;letter-spacing:12px;text-align:center;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.pin-form input::placeholder{font-size:14px;letter-spacing:0;color:#b3a68c}
+.pin-form input:focus{outline:3px solid #d77534;outline-offset:2px}
+.pin-error{min-height:1.6em;margin:8px 0 0;font-size:12px;color:#ab3c3c;text-align:center}
+.photo-source{font-size:10px;margin:6px 0 0;color:#8a7d64}.photo-source a{text-decoration:underline}
+
+@media(prefers-reduced-motion:reduce){.confetti,.prize-roller{display:none}.stamp.just-earned .seal,.route-stop.just-earned .stop-medallion,.travel-companion.speaking *{animation:none!important}}
