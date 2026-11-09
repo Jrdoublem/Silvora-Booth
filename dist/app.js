@@ -5,13 +5,13 @@ const PRIZES=['ขนม','ลูกอม','สติ๊กเกอร์'];
 const tasks=[
   {id:'quiz',icon:'compass',title:'ตอบไว รู้ใจอยุธยา',short:'ตอบคำถาม',hint:'ทายภาพใน 10 วิ',ink:'#b0563a',tilt:-9},
   {id:'match',icon:'map',title:'จับคู่ แลนด์มาร์ก',short:'จับคู่ภาพ',hint:'3 คู่ใน 30 วิ',ink:'#2f6b55',tilt:7},
-  {id:'page',icon:'heart',title:'แวะเยี่ยมเพจ Silvora',short:'เยี่ยมชมเพจ',hint:'เปิดเพจแล้วกลับมา',ink:'#3f5a8a',tilt:-4}
+  {id:'page',icon:'heart',title:'กดไลค์เพจ Silvora',short:'กดไลค์เพจ',hint:'ไลค์เพจแล้วกลับมา',ink:'#3f5a8a',tilt:-4}
 ];
 // A passport-style rubber stamp for a finished task. Ink texture comes from #stamp-ink in index.html.
 let stampUid=0;
 function stampArt(t,withLabel){
   const n=tasks.indexOf(t)+1,arc=`stamp-arc-${++stampUid}`;
-  return `<svg class="stamp-art" viewBox="0 0 120 120" style="color:${t.ink}" aria-hidden="true"><g filter="url(#stamp-ink)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="60" cy="60" r="56" stroke-width="3.4"/><circle cx="60" cy="60" r="45" stroke-width="1.3"/><path id="${arc}" d="M13.5 60a46.5 46.5 0 1 1 93 0a46.5 46.5 0 1 1-93 0" stroke="none"/><text fill="currentColor" stroke="none" font-family="system-ui,sans-serif" font-size="10" font-weight="800"><textPath href="#${arc}" textLength="288" lengthAdjust="spacing">SILVORA ★ AYUTTHAYA ★ STOP 0${n} ★</textPath></text><use href="assets/icons.svg#${t.icon}" x="${withLabel?44:40}" y="${withLabel?22:36}" width="${withLabel?32:40}" height="${withLabel?32:40}" stroke-width="2"/>${withLabel?`<path d="M17 63h86l-5 10 5 10H17l5-10Z" stroke-width="1.6"/><text x="60" y="77.5" text-anchor="middle" fill="currentColor" stroke="none" font-size="11.5" font-weight="700">${t.short}</text><path d="M48 93h24M56 98h8" stroke-width="1.4"/>`:'<path d="m30 60-5-3v6Zm60 0 5-3v6Z" fill="currentColor" stroke="none"/>'}</g></svg>`;
+  return `<svg class="stamp-art" viewBox="0 0 120 120" style="color:${t.ink}" aria-hidden="true"><g filter="url(#stamp-ink)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="60" cy="60" r="56" stroke-width="3.4"/><circle cx="60" cy="60" r="45" stroke-width="1.3"/><path id="${arc}" d="M13.5 60a46.5 46.5 0 1 1 93 0a46.5 46.5 0 1 1-93 0" stroke="none"/><text fill="currentColor" stroke="none" font-family="system-ui,sans-serif" font-size="10" font-weight="800"><textPath href="#${arc}" textLength="288" lengthAdjust="spacing">SILVORA • AYUTTHAYA • STOP 0${n} •</textPath></text><use href="assets/icons.svg#${t.icon}" x="${withLabel?44:40}" y="${withLabel?22:36}" width="${withLabel?32:40}" height="${withLabel?32:40}" stroke-width="2"/>${withLabel?`<path d="M17 63h86l-5 10 5 10H17l5-10Z" stroke-width="1.6"/><text x="60" y="77.5" text-anchor="middle" fill="currentColor" stroke="none" font-size="11.5" font-weight="700">${t.short}</text><path d="M48 93h24M56 98h8" stroke-width="1.4"/>`:'<path d="m30 60-5-3v6Zm60 0 5-3v6Z" fill="currentColor" stroke="none"/>'}</g></svg>`;
 }
 const TASK_IDS=tasks.map(t=>t.id);
 
@@ -23,7 +23,7 @@ const has=id=>state.stamps.includes(id);
 const reducedMotion=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch{toast('บันทึกไม่ได้ กรุณาเปิดหน้านี้ค้างไว้')}}
-function toast(s){$('#toast').textContent=s;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',3500)}
+function toast(s,iconName){$('#toast').innerHTML=(iconName?icon(iconName)+' ':'')+s;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',3500)}
 
 function renderPassport(n){
   $('#count').textContent=`${n} / 3 ดวง`;
@@ -52,7 +52,7 @@ function renderCompanion(n){
 }
 function renderGift(n){
   $('#draw').disabled=n<3||!!state.prize;
-  $('#draw').textContent=state.prize?'เปิดกล่องแล้ว':n===3?'เปิดกล่องสุ่มของฉัน ↗':`เก็บอีก ${3-n} แสตมป์เพื่อเปิดกล่อง`;
+  $('#draw').innerHTML=state.prize?`เปิดกล่องแล้ว ${icon('check')}`:n===3?`เปิดกล่องสุ่มของฉัน ${icon('gift')}`:`เก็บอีก ${3-n} แสตมป์เพื่อเปิดกล่อง`;
   $('#prize-result').innerHTML=state.prize?`คุณได้รับ <strong>${state.prize}</strong> รับของได้ที่บูธเลย`:'';
 }
 // The hero button follows progress: start the next unfinished stop, or go to the gift.
@@ -66,7 +66,7 @@ function retry(message,fn){open('TRY AGAIN',`<div class="result"><div class="res
 function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
 
 // quiz(), match() live in photo-games.js and page() in visit.js; they are looked up when tapped.
-function startTask(id){if(has(id))return toast('จุดแวะนี้ได้รับแสตมป์แล้ว ✓');({quiz,match,page})[id]()}
+function startTask(id){if(has(id))return toast('จุดแวะนี้ได้รับแสตมป์แล้ว','check');({quiz,match,page})[id]()}
 
 function confetti(startAt=0){
   const colors=['#c59a50','#35594b','#ab5b3c','#e9c56b','#7f9c8a','#d98b6a'];
@@ -76,7 +76,7 @@ function finish(id){
   if(!has(id)){state.stamps.push(id);justEarned=id;save()}
   render();
   const n=state.stamps.length;
-  open('STAMP COLLECTED',`<div class="result stamp-celebration">${n===3?confetti():''}<div class="stamp-impact" style="--tilt:${tasks.find(t=>t.id===id).tilt}deg">${stampArt(tasks.find(t=>t.id===id),true)}</div><h2>${n===3?'ครบ 3 ดวงแล้ว!':'ประทับความสนุกแล้ว!'}</h2><p>${tasks.find(t=>t.id===id).short} สำเร็จแล้ว<br>ตอนนี้มี ${n} / 3 ดวง</p><button class="primary wide" id="continue">${n===3?'ไปเปิดกล่องของขวัญ':'แวะจุดต่อไป'} →</button></div>`);
+  open('STAMP COLLECTED',`<div class="result stamp-celebration">${n===3?confetti():''}<div class="stamp-impact" style="--tilt:${tasks.find(t=>t.id===id).tilt}deg">${stampArt(tasks.find(t=>t.id===id),true)}</div><h2>${n===3?'ครบ 3 ดวงแล้ว!':'ประทับความสนุกแล้ว!'}</h2><p>${tasks.find(t=>t.id===id).short} สำเร็จแล้ว<br>ตอนนี้มี ${n} / 3 ดวง</p><button class="primary wide" id="continue">${n===3?'ไปเปิดกล่องของขวัญ':'แวะจุดต่อไป'} ${icon('arrow')}</button></div>`);
   $('#continue').onclick=()=>{modal.close();$(n===3?'.gift':'#journey-map').scrollIntoView({behavior:reducedMotion()?'instant':'smooth',block:'center'})};
 }
 // After the stamp dialog closes, press the new stamp into the passport and the map.
@@ -136,6 +136,6 @@ $('#draw').onclick=openReward;
 $('#close').onclick=()=>modal.close();
 modal.addEventListener('close',()=>{clearInterval(timer);session++;pressNewStamp()});
 $('#start').onclick=()=>{const t=nextTask();if(t)return startTask(t.id);$('.gift').scrollIntoView({behavior:reducedMotion()?'instant':'smooth',block:'center'})};
-$('#help').onclick=()=>open('HOW TO PLAY','<h2>เล่น สะสม แล้วลุ้นของขวัญ</h2><p>① ตอบคำถามให้ถูกภายใน 10 วินาที<br>② จับคู่ภาพกับชื่อวัด 3 คู่ใน 30 วินาที<br>③ เปิดเพจ Silvora แล้วกลับมารับแสตมป์อัตโนมัติ<br>④ ครบ 3 แสตมป์ เปิดกล่องสุ่ม 1 ครั้ง แล้วรับของที่บูธ</p><p class="note">แสตมป์เก็บไว้ในเบราว์เซอร์เครื่องนี้ กรุณาเล่นด้วยเครื่องเดิมจนจบ และอย่าล้างข้อมูลเว็บไซต์ระหว่างเล่น</p><a class="photo-credit-link" href="photo-credits.html">เครดิตภาพถ่ายวัด (Wikimedia Commons)</a>');
+$('#help').onclick=()=>open('HOW TO PLAY',`<h2>เล่น สะสม แล้วลุ้นของขวัญ</h2><ol class="howto">${[['compass','ตอบคำถามให้ถูกภายใน 10 วินาที'],['map','จับคู่ภาพกับชื่อสถานที่ 3 คู่ใน 30 วินาที'],['heart','กดไลค์เพจ Silvora แล้วกลับมารับแสตมป์อัตโนมัติ'],['gift','ครบ 3 แสตมป์ เปิดกล่องสุ่ม 1 ครั้ง แล้วรับของที่บูธ']].map(([ic,text])=>`<li>${icon(ic)}<span>${text}</span></li>`).join('')}</ol><p class="note">แสตมป์เก็บไว้ในเบราว์เซอร์เครื่องนี้ กรุณาเล่นด้วยเครื่องเดิมจนจบ และอย่าล้างข้อมูลเว็บไซต์ระหว่างเล่น</p>`);
 $('#reset').onclick=openReset;
 render();

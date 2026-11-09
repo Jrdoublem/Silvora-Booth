@@ -8,7 +8,7 @@ function completeVisit(){
   if(!state.stamps.includes('page'))finish('page');
 }
 function page(){
-  open('จุดแวะ 03 / 3 · VISIT SILVORA',`<h2>แวะเยี่ยมเพจ Silvora</h2><p>เปิดเพจ Facebook เพื่อรู้จัก Silvora ให้มากขึ้น<br>แล้วกดย้อนกลับมาหน้าเกม รับแสตมป์อัตโนมัติได้เลย</p><a class="primary wide" id="visit-page" href="https://www.facebook.com/profile.php?id=61561262889835" target="_self" rel="noreferrer">ไปเยี่ยมชมเพจ Silvora ↗</a><p class="note">แสตมป์นี้สำหรับการเปิดลิงก์เยี่ยมชมเพจ ไม่ได้ตรวจการกดไลค์<br>ถ้าเปิดในแอป Facebook ให้กลับมาเบราว์เซอร์เดิม</p>`);
+  open('จุดแวะ 03 / 3 · LIKE SILVORA',`<h2>กดไลค์เพจ Silvora</h2><p>กดไลค์เพจ Facebook ของ Silvora<br>แล้วกดย้อนกลับมาหน้าเกม รับแสตมป์อัตโนมัติได้เลย</p><a class="primary wide" id="visit-page" href="https://www.facebook.com/profile.php?id=61561262889835" target="_self" rel="noreferrer">ไปกดไลค์เพจ Silvora ${icon('external')}</a><p class="note">ถ้าเปิดในแอป Facebook ให้กลับมาที่เบราว์เซอร์เดิม</p>`);
   $('#visit-page').onclick=event=>{
     try{sessionStorage.setItem(VISIT_KEY,JSON.stringify({left:false}));}
     catch{event.preventDefault();toast('กรุณาอนุญาตการบันทึกข้อมูลเว็บไซต์ แล้วลองใหม่');return}

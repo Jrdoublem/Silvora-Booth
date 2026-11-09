@@ -17,7 +17,7 @@ vm.runInContext('pressNewStamp()',ctx);
 assert.ok(node('[data-stamp="quiz"]').classes.has('just-earned')&&node('[data-stop="quiz"]').classes.has('just-earned'),'New stamp is pressed after the dialog closes');
 assert.deepEqual([startLabel(),nextId()],['ไปจุดแวะต่อไป','match'],'Start button goes to the next unfinished stop');
 vm.runInContext("finish('match')",ctx);
-assert.match(node('#companion-text').innerHTML,/เยี่ยมชมเพจ/,'Mascot names the last remaining stop');
+assert.match(node('#companion-text').innerHTML,/กดไลค์เพจ/,'Mascot names the last remaining stop');
 assert.equal(nextId(),'page');
 assert.doesNotMatch(node('#modal-body').innerHTML,/confetti/);
 vm.runInContext("finish('page')",ctx);
@@ -59,6 +59,16 @@ assert.equal(saved().stamps.length,1,'Correct PIN is refused while locked');
 storage.set('silvora-staff-lock',JSON.stringify({fails:3,until:Date.now()-1}));
 submitPin('1010');
 assert.equal(saved().stamps.length,0,'Lock expires and the PIN works again');
+// Photo game data: every place has its photo, a valid answer, and the match game has enough places.
+const games=vm.createContext({});vm.runInContext(fs.readFileSync('dist/photo-games.js','utf8')+';this.places=templePhotos;this.pairs=MATCH_PAIRS',games);
+assert.ok(games.places.length>=games.pairs,'Enough places for one match round');
+assert.equal(new Set(games.places.map(p=>p.id)).size,games.places.length,'Place ids are unique');
+for(const p of games.places){
+  assert.ok(fs.existsSync(`dist/assets/places/${p.id}.jpg`),`photo for ${p.id}`);
+  assert.ok(p.name&&p.description&&p.question,`text for ${p.id}`);
+  assert.ok(Number.isInteger(p.correct)&&p.choices[p.correct]!==undefined,`answer for ${p.id}`);
+  assert.equal(new Set(p.choices).size,p.choices.length,`distinct choices for ${p.id}`);
+}
 // Every file referenced by the pages and stylesheets must exist.
 for(const f of fs.readdirSync('dist').filter(f=>/\.(html|css|js)$/.test(f))){const text=fs.readFileSync('dist/'+f,'utf8');for(const m of text.matchAll(/(?:src|href)="([\w./-]+\.(?:css|js|html|png|jpg|svg))|url\('(assets\/[^')]+)'\)/g)){const p=m[1]||m[2];assert.ok(fs.existsSync('dist/'+p),`${f} -> ${p}`)}}
 const visitStorage=new Map(),events={};

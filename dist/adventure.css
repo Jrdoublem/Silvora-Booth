@@ -7,8 +7,7 @@
 @media(max-width:650px){.journey-map{padding:17px 11px 12px}.route-stops{gap:4px}.stop-medallion{width:55px;height:55px}.stop-medallion .ui-icon{width:26px;height:26px}.route-stop strong{font-size:11px}.stop-status{font-size:8px}.stop-number{font-size:8px}.route-line{top:26px}.reward-reveal h2{font-size:25px}}
 @media(prefers-reduced-motion:reduce){.stamp-impact,.stamp-celebration h2,.reward-reveal,.gift-spark,.gift-halo,.box-lid{animation:none!important}.box-lid{transform:translate(-10px,-49px) rotate(-15deg)}.stop-medallion{transition:none}.reward-reveal{opacity:1;transform:none}}
 
-.photo-preview{display:flex;gap:6px}.photo-preview img,.question-photo img{min-width:0;flex:1;width:100%;object-fit:cover;border-radius:9px}.photo-preview img{height:clamp(95px,19vh,150px)}#photo-status{font-size:12px}.photo-credit-link{display:block;font-size:11px;text-decoration:underline;margin-top:14px;color:#736b5c}
-
+.photo-preview{display:flex;gap:6px}.photo-preview img,.question-photo img{min-width:0;flex:1;width:100%;object-fit:cover;border-radius:9px}.photo-preview img{height:clamp(95px,19vh,150px)}#photo-status{font-size:12px}
 .question-photo img{display:block;height:clamp(105px,20vh,165px);margin:8px 0 12px;object-fit:contain;background:#eee6d6}.match-grid:has(.photo-tile){grid-template-columns:1.2fr 1fr;grid-template-rows:repeat(3,clamp(74px,12vh,103px));grid-auto-flow:column}.match-grid:has(.photo-tile) .tile{min-height:0;height:100%}.match-grid .photo-tile img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* A newly earned stamp presses into the passport and the map after the dialog closes. */
@@ -53,6 +52,14 @@
 @keyframes roll{from{transform:translateY(0)}to{transform:translateY(calc(var(--steps) * -34px))}}
 @keyframes roller-out{to{opacity:0;height:0;margin:0}}
 
+/* Icons that replaced text symbols: help/close buttons, toast, how-to list, visit link. */
+.icon{display:inline-grid;place-items:center;padding:0}.icon .ui-icon{width:19px;height:19px;stroke-width:1.9}
+#toast .ui-icon{width:16px;height:16px;stroke-width:2.2;margin:-2px 4px 0 0}
+#visit-page .ui-icon{width:18px;height:18px;margin-left:8px}
+.howto{list-style:none;padding:0;margin:14px 0 4px}
+.howto li{display:flex;align-items:center;gap:12px;padding:7px 0;font-size:14px;line-height:1.6;color:#6f6450}
+.howto .ui-icon{width:36px;height:36px;padding:8px;border-radius:50%;background:#f2e6cc;color:#916c36;stroke-width:1.8}
+
 /* Staff PIN form for the reset button. */
 .staff-reset{display:block;margin:22px auto 0;border:0;background:none;text-decoration:underline;color:#a99882;font-size:10px}
 .pin-form{margin-top:14px}
@@ -60,6 +67,5 @@
 .pin-form input::placeholder{font-size:14px;letter-spacing:0;color:#b3a68c}
 .pin-form input:focus{outline:3px solid #d77534;outline-offset:2px}
 .pin-error{min-height:1.6em;margin:8px 0 0;font-size:12px;color:#ab3c3c;text-align:center}
-.photo-source{font-size:10px;margin:6px 0 0;color:#8a7d64}.photo-source a{text-decoration:underline}
 
 @media(prefers-reduced-motion:reduce){.confetti,.prize-roller{display:none}.stamp.just-earned .seal,.route-stop.just-earned .stop-medallion,.travel-companion.speaking *{animation:none!important}}

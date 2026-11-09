@@ -11,7 +11,10 @@
 <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
 <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v2m0 18v2M1 12h2m18 0h2M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></symbol>
 <symbol id="spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/></symbol>
-<symbol id="candy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M7.6 9.6 3 7.5l1 4.5-1 4.5 4.6-2.1M16.4 9.6 21 7.5 20 12l1 4.5-4.6-2.1M10 8.5c1.5 2 1.5 5 0 7M14 8.5c-1.5 2-1.5 5 0 7"/></symbol>
+<symbol id="close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.2a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.4-2.7 4"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/></symbol>
+<symbol id="external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></symbol>
+<symbol id="candy"viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M7.6 9.6 3 7.5l1 4.5-1 4.5 4.6-2.1M16.4 9.6 21 7.5 20 12l1 4.5-4.6-2.1M10 8.5c1.5 2 1.5 5 0 7M14 8.5c-1.5 2-1.5 5 0 7"/></symbol>
 <symbol id="cookie" viewBox="0 0 24 24"><path d="M21 13.5A9 9 0 1 1 10.5 3a3 3 0 0 0 4 3.5 3 3 0 0 0 3.5 4 3 3 0 0 0 3 3Z"/><circle cx="8.5" cy="9.5" r=".9"/><circle cx="14" cy="13" r=".9"/><circle cx="9" cy="15.5" r=".9"/><circle cx="13" cy="18" r=".6"/></symbol>
 <symbol id="sticker" viewBox="0 0 24 24"><path d="M15 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9Z"/><path d="M15 21v-3a3 3 0 0 1 3-3h3M12 6.5l1.3 2.7 3 .4-2.2 2.1.5 3-2.6-1.4-2.6 1.4.5-3-2.2-2.1 3-.4Z"/></symbol>
 </defs></svg>
